@@ -61,3 +61,7 @@ public:
     X operator++(int) { return value++; }
     X operator--(int) { return value--; }
 };
+
+#undef OPERATOR_FUNC_0ARG
+#undef OPERATOR_FUNC_2ARG
+#undef OPERATOR_FUNC_ASSIGN
