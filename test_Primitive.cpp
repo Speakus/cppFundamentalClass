@@ -2,6 +2,7 @@
 
 #include "Primitive.hpp"
 #include <assert.h> // for assert()
+#include <string.h> // for memcmp()
 
 static void test_Primitive(void) {
     assert(sizeof(Primitive<int>) == sizeof(int));
@@ -18,6 +19,8 @@ static void test_Primitive(void) {
     assert(1U == val);
     const unsigned long long tmp = val;
     assert(1U == tmp);
+    const bool binarySame = (0 == memcmp(&tmp, &val, sizeof(tmp)));
+    assert(binarySame);
 
     Primitive<float> valf = 1.0f;
     assert(1.0f == valf);
