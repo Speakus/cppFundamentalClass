@@ -53,7 +53,7 @@ public:
 #undef OPERATOR_FUNC_2ARG
 
     // prefix operators
-#define PREFIX_OPERATOR(oper) X operator oper(void) const { return oper(value); }
+#define PREFIX_OPERATOR(oper) X operator oper(void) const { return X(oper(value)); }
     PREFIX_OPERATOR(+);
     PREFIX_OPERATOR(-);
     PREFIX_OPERATOR(!);
