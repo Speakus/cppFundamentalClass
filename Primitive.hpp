@@ -11,8 +11,12 @@ _Pragma("once");
 #define OPERATOR_FUNC_0ARG(res, oper) \
     res operator oper(void) const { return oper(value); }
 
-template <class T> class Primitive {
-    typedef Primitive<T> X;
+// you could use N from int (or enum) if you want stronger typing between different types
+// example:
+// typedef Primitive<double, 1> timeT;
+// typedef Primitive<double, 2> volumeLevelT;
+template <class T, int N = 0> class Primitive {
+    typedef Primitive<T, N> X;
 private:
     T value;
 public:

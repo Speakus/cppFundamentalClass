@@ -26,10 +26,22 @@ static void test_Primitive(void) {
     assert(1.0f == valf);
 }
 
+static void test_compilation_fails(void) {
+    Primitive<int> tmp1 = 1;
+    assert(1 == tmp1);
+    Primitive<int, 1> tmp2 = 2;
+    assert(2 == tmp2);
+#if 0 // uncomment it for test compilation fails
+    int i = tmp1 + tmp2;
+    assert(3 == i);
+#endif
+}
+
 #include <stdio.h> // for printf()
 
 int main(void) {
     test_Primitive();
+    test_compilation_fails();
     printf("test passed\n");
     return 0;
 }
