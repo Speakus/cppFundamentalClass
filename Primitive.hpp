@@ -53,11 +53,11 @@ public:
 #undef OPERATOR_FUNC_2ARG
 
     // prefix operators
-#define PREFIX_OPERATOR(oper) X operator oper(void) const { return X(oper(value)); }
-    PREFIX_OPERATOR(+);
-    PREFIX_OPERATOR(-);
-    PREFIX_OPERATOR(!);
-    PREFIX_OPERATOR(~);
+#define PREFIX_OPERATOR(resT, oper) resT operator oper(void) const { return X(oper(value)); }
+    PREFIX_OPERATOR(bool, !);
+    PREFIX_OPERATOR(X, +);
+    PREFIX_OPERATOR(X, -);
+    PREFIX_OPERATOR(X, ~);
 #undef PREFIX_OPERATOR
 
     // postfix, prefix increment & descrement
