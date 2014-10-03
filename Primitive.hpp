@@ -58,7 +58,7 @@ public:
     PREFIX_OPERATOR(-);
     PREFIX_OPERATOR(!);
     PREFIX_OPERATOR(~);
-#undef OPERATOR_FUNC_0ARG
+#undef PREFIX_OPERATOR
 
     // postfix, prefix increment & descrement
     const X& operator++(void) { ++value; return *this; }
