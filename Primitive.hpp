@@ -63,6 +63,6 @@ public:
     // postfix, prefix increment & descrement
     const X& operator++(void) { ++value; return *this; }
     const X& operator--(void) { --value; return *this; }
-    X operator++(int) { return value++; }
-    X operator--(int) { return value--; }
+    X operator++(int) { return X(value++); }
+    X operator--(int) { return X(value--); }
 };
