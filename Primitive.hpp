@@ -14,43 +14,43 @@ public:
     Primitive(const T& rhs) : value(rhs) { }
     operator T () const { return value; }
     
-#define OPERATOR_FUNC_ASSIGN(oper) \
+#define ASSIGN_OPERATOR(oper) \
     X& operator oper(const X& rhs) { value oper rhs.value; return *this; } \
     template <class TT> X& operator oper(const TT& rhs) { value oper rhs; return *this; }
-    OPERATOR_FUNC_ASSIGN(+=);
-    OPERATOR_FUNC_ASSIGN(-=);
-    OPERATOR_FUNC_ASSIGN(*=);
-    OPERATOR_FUNC_ASSIGN(/=);
-    OPERATOR_FUNC_ASSIGN(%=);
-    OPERATOR_FUNC_ASSIGN(&=);
-    OPERATOR_FUNC_ASSIGN(|=);
-    OPERATOR_FUNC_ASSIGN(^=);
-    OPERATOR_FUNC_ASSIGN(<<=);
-    OPERATOR_FUNC_ASSIGN(>>=);
-#undef OPERATOR_FUNC_ASSIGN
+    ASSIGN_OPERATOR(+=);
+    ASSIGN_OPERATOR(-=);
+    ASSIGN_OPERATOR(*=);
+    ASSIGN_OPERATOR(/=);
+    ASSIGN_OPERATOR(%=);
+    ASSIGN_OPERATOR(&=);
+    ASSIGN_OPERATOR(|=);
+    ASSIGN_OPERATOR(^=);
+    ASSIGN_OPERATOR(<<=);
+    ASSIGN_OPERATOR(>>=);
+#undef ASSIGN_OPERATOR
     // compare
-#define OPERATOR_FUNC_2ARG(resT, oper) \
+#define OPERATOR_WITH_2_OPERANDS(resT, oper) \
     friend resT operator oper(const X& lhs, const X& rhs) { return lhs.value oper rhs.value; } \
     template <class TT> friend resT operator oper(const TT& lhs, const X& rhs) { return lhs oper rhs.value; } \
     template <class TT> friend resT operator oper(const X& lhs, const TT& rhs) { return lhs.value oper rhs; }
-    OPERATOR_FUNC_2ARG(bool, ==);
-    OPERATOR_FUNC_2ARG(bool, !=);
-    OPERATOR_FUNC_2ARG(bool, >=);
-    OPERATOR_FUNC_2ARG(bool, <=);
-    OPERATOR_FUNC_2ARG(bool, > );
-    OPERATOR_FUNC_2ARG(bool, < );
+    OPERATOR_WITH_2_OPERANDS(bool, ==);
+    OPERATOR_WITH_2_OPERANDS(bool, !=);
+    OPERATOR_WITH_2_OPERANDS(bool, >=);
+    OPERATOR_WITH_2_OPERANDS(bool, <=);
+    OPERATOR_WITH_2_OPERANDS(bool, > );
+    OPERATOR_WITH_2_OPERANDS(bool, < );
     // two elements to result operators
-    OPERATOR_FUNC_2ARG(X, |);
-    OPERATOR_FUNC_2ARG(X, &);
-    OPERATOR_FUNC_2ARG(X, ^);
-    OPERATOR_FUNC_2ARG(X, +);
-    OPERATOR_FUNC_2ARG(X, -);
-    OPERATOR_FUNC_2ARG(X, *);
-    OPERATOR_FUNC_2ARG(X, /);
-    OPERATOR_FUNC_2ARG(X, %);
-    OPERATOR_FUNC_2ARG(X, <<);
-    OPERATOR_FUNC_2ARG(X, >>);
-#undef OPERATOR_FUNC_2ARG
+    OPERATOR_WITH_2_OPERANDS(X, |);
+    OPERATOR_WITH_2_OPERANDS(X, &);
+    OPERATOR_WITH_2_OPERANDS(X, ^);
+    OPERATOR_WITH_2_OPERANDS(X, +);
+    OPERATOR_WITH_2_OPERANDS(X, -);
+    OPERATOR_WITH_2_OPERANDS(X, *);
+    OPERATOR_WITH_2_OPERANDS(X, /);
+    OPERATOR_WITH_2_OPERANDS(X, %);
+    OPERATOR_WITH_2_OPERANDS(X, <<);
+    OPERATOR_WITH_2_OPERANDS(X, >>);
+#undef OPERATOR_WITH_2_OPERANDS
 
     // prefix operators
 #define PREFIX_OPERATOR(resT, oper) resT operator oper(void) const { return X(oper(value)); }
