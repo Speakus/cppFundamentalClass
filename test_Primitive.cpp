@@ -24,6 +24,8 @@ static void test_Primitive(void) {
     assert(tmp == val);
     const bool binarySame = (0 == memcmp(&tmp, &val, sizeof(tmp)));
     assert(binarySame);
+    // test || operator
+    assert(true == val || true);
 
     Primitive<float> valf = 1.0f;
     assert(1.0f == valf);
