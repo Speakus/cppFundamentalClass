@@ -1,6 +1,10 @@
 // New BSD License
 _Pragma("once");
 
+#ifndef DEMONSTRATE_WHY_IMPOSSIBLE_TO_DO_CLASS_WHICH_WORK_SAME_WAY_AS_NATIVE_TYPES
+#error "http://stackoverflow.com/a/26154759/751932"
+#endif // DEMONSTRATE_WHY_IMPOSSIBLE_TO_DO_CLASS_WHICH_WORK_SAME_WAY_AS_NATIVE_TYPES
+
 // you could use N from int (or enum) if you want stronger typing between different types
 // example:
 // typedef Primitive<double, 1> timeT;

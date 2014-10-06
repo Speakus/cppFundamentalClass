@@ -1,12 +1,12 @@
 // New BSD License
-
+#define DEMONSTRATE_WHY_IMPOSSIBLE_TO_DO_CLASS_WHICH_WORK_SAME_WAY_AS_NATIVE_TYPES
 #include "Primitive.hpp"
 #include <assert.h> // for assert()
 #include <string.h> // for memcmp()
 
 static void test_Primitive(void) {
     assert(sizeof(Primitive<int>) == sizeof(int));
-    Primitive<unsigned long long> val = 1;
+    Primitive<unsigned long> val = 1;
     assert(1U == val);
     val <<= 1;
     assert(2U == val);
@@ -17,7 +17,7 @@ static void test_Primitive(void) {
     val = 1 | val;
     val = val || val;
     assert(1U == val);
-    const unsigned long long tmp = ++val;
+    const unsigned long tmp = ++val;
     assert(2U == tmp);
     val--;
     val++;
@@ -26,6 +26,9 @@ static void test_Primitive(void) {
     assert(binarySame);
     // test || operator
     assert(true == val || true);
+
+    assert(true == val || ++val);
+    assert(2U == val); // fail if val is class but pass if val is int
 
     Primitive<float> valf = 1.0f;
     assert(1.0f == valf);
