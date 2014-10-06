@@ -39,6 +39,8 @@ public:
     OPERATOR_WITH_2_OPERANDS(bool, <=);
     OPERATOR_WITH_2_OPERANDS(bool, > );
     OPERATOR_WITH_2_OPERANDS(bool, < );
+    OPERATOR_WITH_2_OPERANDS(bool, &&);
+    OPERATOR_WITH_2_OPERANDS(bool, ||);
     // two elements to result operators
     OPERATOR_WITH_2_OPERANDS(X, |);
     OPERATOR_WITH_2_OPERANDS(X, &);
