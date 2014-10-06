@@ -20,6 +20,8 @@ static void test_Primitive(void) {
     const unsigned long long tmp = ++val;
     assert(2U == tmp);
     val--;
+    val++;
+    assert(tmp == val);
     const bool binarySame = (0 == memcmp(&tmp, &val, sizeof(tmp)));
     assert(binarySame);
 
