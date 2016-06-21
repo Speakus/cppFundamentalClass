@@ -6,7 +6,12 @@
 
 static void test_Primitive(void) {
     assert(sizeof(Primitive<int>) == sizeof(int));
+//#define ALLOW_TO_PASS // uncomment this line to pass
+#ifdef ALLOW_TO_PASS
+    unsigned long val = 1;
+#else
     Primitive<unsigned long> val = 1;
+#endif
     assert(1U == val);
     val <<= 1;
     assert(2U == val);
@@ -24,11 +29,16 @@ static void test_Primitive(void) {
     assert(tmp == val);
     const bool binarySame = (0 == memcmp(&tmp, &val, sizeof(tmp)));
     assert(binarySame);
-    // test || operator
-    assert(true == val || true);
 
-    assert(true == val || ++val);
-    assert(2U == val); // fail if val is class but pass if val is int
+    // test || operator
+    assert(2U == val);
+    assert(true == val || true);
+    --val;
+
+    // test || operator (second part should not be called if first one is true)
+    assert(1U == val);
+    assert(1U == val || ++val);
+    assert(1U == val); // fail if val is class but pass if val is int
 
     Primitive<float> valf = 1.0f;
     assert(1.0f == valf);
